@@ -16,7 +16,6 @@ from ...loader import bot
 from ...states import PurchaseStates, AfterPurchaseStates, CourseInteraction
 from ...models import UnpaidUser, PaidUser, BankCards
 
-# ADMIN_CHAT_ID = 58790442
 ADMIN_CHAT_ID = 58790442
 user_data = {}
 
@@ -211,6 +210,10 @@ def confirm_payment(call):
         if call.from_user.username is not None:
             try:
                 bot.send_message(user_id, "Ваша подписка активируется в ближайшее время...")
+                try:
+                    bot.delete_message(chat_id=call.message.chat.id, message_id=call.message.message_id)
+                except:
+                    pass
                 check_user_is_paid(user_id, chat_id, call.message)
             except Exception as e:
                 pass
@@ -245,10 +248,6 @@ def confirm_payment(call):
     #                    reply_markup=markup,
     #                    parse_mode='Markdown')
 
-    try:
-        bot.delete_message(chat_id=call.message.chat.id, message_id=call.message.message_id)
-    except:
-        pass
 
 
 @bot.callback_query_handler(state=PurchaseStates.choose_bank,

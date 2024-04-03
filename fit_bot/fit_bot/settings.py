@@ -79,10 +79,10 @@ WSGI_APPLICATION = "fit_bot.wsgi.application"
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
-        'USER': 'postgres',
-        'PASSWORD': 'postgres',
-        'HOST': '192.168.240.6',
+        'NAME': 'fit_new_db',
+        'USER': 'fit_new_user',
+        'PASSWORD': 'fit_new_pass',
+        'HOST': 'localhost',
         'PORT': '5432',
     }
 }
@@ -115,7 +115,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
 LANGUAGE_CODE = "Ru-ru"
-TIME_ZONE = "Europe/Moscow"
+TIME_ZONE = "Asia/Tashkent"
 USE_I18N = True
 USE_TZ = True
 
